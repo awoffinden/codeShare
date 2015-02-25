@@ -5,6 +5,9 @@ var arr = [10,20,30];
 
   //Code Here
 
+  var first = function(arr) {
+	 return arr[0];
+  }
 
 
 
@@ -16,7 +19,9 @@ var arr = [40,50,60];
 
   //Code Here
 
-
+var last = function(arr) {
+	return arr[arr.length -1]
+}
 
 
 
@@ -26,6 +31,11 @@ var family = ['Tyler', 'Jordyn', 'Ryan', 'Chelsey', 'Ireland'];
 
   //Code Here
 
+  var looper = function(family) {
+	for (var ii=0; ii<family.length;ii++) {
+		alert(family[ii])
+	}	
+  }
 
 
 
@@ -45,8 +55,15 @@ var letters = ['A', 'B', 'C', 'D', 'E'];
 var nums = [1,2,3,6,22,98,45,23,22,12];
 
   //Code Here
-
-
+var evenFinder = function(nums) {
+	for (var ii=nums.length-1; ii>=0; ii--) {
+		if (nums[ii]%2 != 0) {
+			nums.splice(ii, 1);
+		}
+	}
+}
+evenFinder(nums);
+console.log(nums);
 
 
 
@@ -59,8 +76,21 @@ var odds = []
 
 
   //Code Here
-
-
+var divider = function(nums, evens, odds) {
+	for (var ii=0; ii<nums.length; ii++) {
+		if (nums[ii]%2 === 0) {
+			evens.push(nums[ii]);
+		} else {
+			odds.push(nums[ii]);
+		}
+	}
+	nums.length = 0;
+	nums.push(evens);
+	nums.push(odds);
+	
+}
+divider(nums, evens, odds);
+console.log(nums);
 
 
 
@@ -72,10 +102,16 @@ var getRandomArbitrary = function() {
 }
 var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
 
-  //Code Here
+var finder = function(numbers) {
+	//cheating by using indexOf rather than looping
+	if(numbers.indexOf(getRandomArbitrary()) != -1) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
-
-
+finder(numbers);
 
 
 
@@ -85,7 +121,10 @@ var str = 'this is my sentence';
 
   //Code Here
 
-
+var reverse = function(str) {
+	return str.split("").reverse().join("");
+}
+reverse(str);
 
 
 
@@ -97,21 +136,42 @@ var str = 'this is my sentence';
 	 In addItem add the item you passed in to myGroceryList then return the new, updated grocery list.*/
 var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 
-  //Code Here
+
 
 //removeItem('chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //addItem('Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
 
+var removeItem = function(myGroceryList, remove_Item) {
+	if (myGroceryList.indexOf(remove_Item) !== -1) {
+		myGroceryList.splice(myGroceryList.indexOf(remove_Item), 1);
+	}
+	return myGroceryList;
+}
 
+var addItem = function(myGroceryList, add_Item) {
+	if (myGroceryList.indexOf(add_Item) == -1) {
+		myGroceryList.push(add_Item);
+	}
+	return myGroceryList;
+}
 
+removeItem(myGroceryList, 'chips');
+addItem(myGroceryList, 'Jerky');
+console.log(myGroceryList)
 
 
 
 
 //10. Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 
-  //Code Here
-
+var maker = function() {
+	var nums_Array = new Array();
+	for (var ii=1; ii<=215; ii++) {
+		nums_Array.push(ii);
+	}
+	return nums_Array;
+}
+console.log(maker());
 
 
 
@@ -122,6 +182,15 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 var numbers = [5, '9', 16, 19, '25', '34', 48];
 
   //Code Here
+
+var addTen = function(numbers) {
+	var nums_Array = new Array();
+	for (var ii=0; ii<numbers.length; ii++) {
+		nums_Array.push(parseInt(numbers[ii]) + 10);
+	}
+	return nums_Array;
+}
+console.log(addTen(numbers));
 
 
 
@@ -139,10 +208,30 @@ for(var i = 0; i < num2; i++){
 }
 //Write a function that is given arr1 and arr2 is it's only arguments. Return the array which is longest.
 
-  //Code Here
-
+var longestArray = function(arr1, arr2){
+	if (arr1.length < arr2.length) {
+		return arr2;
+	} else {
+		return arr1;
+	}
+}
+console.log(arr1);
+console.log(arr2);
+console.log(longestArray(arr1, arr2));
 
 /*13. As a continuation of the previous problem, write another function called 'both'. Your 'both' function will be given two arguments,
       arr1 and arr2 (from the previous example) 'both' should return a new array full of numbers that are found in both arr1 and arr2.*/
 
-  //Code Here
+
+var both = function(arr1, arr2) {
+	var nums_Array = new Array();
+	for (var ii=0; ii < arr1.length; ii++) {
+		if (arr2.indexOf(arr1[ii]) !== -1) {
+			nums_Array.push(arr1[ii]);
+		}
+	}
+
+	return nums_Array;
+}
+
+console.log(both(arr1,arr2));
